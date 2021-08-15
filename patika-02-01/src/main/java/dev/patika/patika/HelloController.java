@@ -84,9 +84,27 @@ public class HelloController {
     // http://localhost:8080/sum?num1=10&num2=20
     // output --> 10 + 20 = 30
     @GetMapping("/calculate/{operation}")
-    public String calculate(){
-        return null;
-    }
+    public String calculate(@PathVariable String operation , @RequestParam int num1, @RequestParam int num2){
 
+        String response="";
+
+        switch (operation){
+            case "sum":
+                response = num1 + " + " + num2 + " = " + (num1+num2);
+                break;
+            case "subtract":
+                response = num1 + " - " + num2 + " = " + (num1-num2);
+                break;
+            case "divide":
+                response = num1 + " / " + num2 + " = " + ((double)num1/num2);
+                break;
+            case "multiply":
+                response = num1 + " * " + num2 + " = " + (num1*num2);
+                break;
+            default:
+                response = "Operation is not valid";
+        }
+        return response;
+    }
 
 }
