@@ -2,6 +2,7 @@ package dev.patika.patika0401.service;
 
 import dev.patika.patika0401.dto.CustomerDTO;
 import dev.patika.patika0401.exceptions.BadRequestException;
+import dev.patika.patika0401.exceptions.CustomerNotFoundException;
 import dev.patika.patika0401.mappers.CustomerMapper;
 import dev.patika.patika0401.model.Customer;
 import dev.patika.patika0401.repository.CustomerRepository;
@@ -39,6 +40,23 @@ public class CustomerService {
         Customer customer = customerMapper.mapFromCustomerDTOtoCustomer(customerDTO);
 
         return Optional.of(customerRepository.save(customer));
+    }
+    @Transactional
+    public void delete(long id){
+        if(!customerRepository.existsById(id)){
+            throw new CustomerNotFoundException("Customer not found.");
+        }
+        customerRepository.deleteById(id);
+    }
+    @Transactional
+    public Customer update(CustomerDTO customerDTO){
+        if(!customerRepository.existsById(customerDTO.getId())){
+            throw new CustomerNotFoundException("Customer not found.");
+        }
+       return customerRepository.save(customerMapper.mapFromCustomerDTOtoCustomer(customerDTO));
+    }
+    public Customer getById(long id){
+      return   customerRepository.findById(id).orElseThrow(()-> new CustomerNotFoundException("Customer not found."));
     }
 
 }

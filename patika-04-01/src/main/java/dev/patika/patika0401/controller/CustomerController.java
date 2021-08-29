@@ -30,6 +30,20 @@ public class CustomerController {
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
+    @PutMapping("/update")
+    public ResponseEntity<Customer> update(CustomerDTO customerDTO){
+            return ResponseEntity.ok(customerService.update(customerDTO));
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable long id){
+        customerService.delete(id);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Customer> getById(@PathVariable long id){
+       return ResponseEntity.ok(customerService.getById(id));
+    }
 
 
 
