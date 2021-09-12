@@ -19,7 +19,7 @@ public class EmployeeService {
     }
 
     public void addEmployee(Employee employee) {
-        // TO-DO check if employee exists ????
+        // TO-DO check if employee exists ???
         if (repository.existsByEmail(employee.getEmail())){
             throw new EmployeeIsAlreadyExistException("Employee with email:" + employee.getEmail() + " is already exist.") ;
         }
