@@ -18,6 +18,7 @@
       <module fileurl="file://$PROJECT_DIR$/patika-06-01/patika-06-01.iml" filepath="$PROJECT_DIR$/patika-06-01/patika-06-01.iml" />
       <module fileurl="file://$PROJECT_DIR$/patika-BrainStorm/patika-BrainStorm.iml" filepath="$PROJECT_DIR$/patika-BrainStorm/patika-BrainStorm.iml" />
       <module fileurl="file://$PROJECT_DIR$/patika-SOLID/patika-SOLID.iml" filepath="$PROJECT_DIR$/patika-SOLID/patika-SOLID.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test-inet/test-inet.iml" filepath="$PROJECT_DIR$/test-inet/test-inet.iml" />
     </modules>
   </component>
 </project>
