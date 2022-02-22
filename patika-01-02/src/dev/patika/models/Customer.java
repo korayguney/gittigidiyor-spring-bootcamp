@@ -16,7 +16,7 @@ public class Customer {
     private long ssid;
 
     @OneToMany(mappedBy = "customer")
-    private List<Vehicle> vehicleList = new ArrayList<>();
+    private List<Moto> vehicleList = new ArrayList<>();
 
     public Customer(String name, String address, long ssid) {
         this.name = name;

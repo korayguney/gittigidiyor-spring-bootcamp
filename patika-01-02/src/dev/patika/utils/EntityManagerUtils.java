@@ -8,6 +8,8 @@ public class EntityManagerUtils {
 
     static EntityManagerFactory emf = null;
 
+    private EntityManagerUtils(){}
+
     public static EntityManager getEntityManager(String persistenceUnitName){
         emf = Persistence.createEntityManagerFactory(persistenceUnitName);
         return emf.createEntityManager();

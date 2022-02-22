@@ -20,10 +20,8 @@ public class InitializerRunner implements CommandLineRunner {
     public void run(String... args) throws Exception {
         repository.deleteAll();
 
-        repository.save(User.builder().name("Ali").age(23).email("a@a.com").build());
-        repository.save(User.builder().age(35).name("Hasan").email("ha@ah.com").build());
-        repository.save(User.builder().age(56).name("Ahmet").email("ahmet@ah.com").build());
-        repository.save(User.builder().age(22).name("Ayşe").email("ayse@a.com").build());
+        repository.save(User.builder().username("ali").password("1234").build());
+        repository.save(User.builder().username("veli").password("1234").role("USER").build());
 
         repository.findAll().forEach(user -> logger.info("{}", user));
 

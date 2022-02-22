@@ -19,6 +19,9 @@ import javax.sql.DataSource;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
+
+import static java.text.MessageFormat.format;
 
 @RestController
 @RequestMapping("/api/wallet")
@@ -74,10 +77,10 @@ public class WalletController {
 
     @GetMapping("/getWallets")
     public ResponseEntity<List<Wallet>> getWallets(@RequestParam int customerId){
+        throw new UnsupportedOperationException("Unsopprrteead..................");
+    //    Optional<List<Wallet>> wallets = walletService.getWallets(customerId);
 
-        Optional<List<Wallet>> wallets = walletService.getWallets(customerId);
-
-        return new ResponseEntity<>(wallets.get(), HttpStatus.OK);
+     //   return new ResponseEntity<>(wallets.get(), HttpStatus.OK);
     }
 
     @GetMapping("/get-transactions-by-date")
@@ -89,6 +92,16 @@ public class WalletController {
             @PageableDefault(page = 0, size = 10) Pageable pageable){
         return new ResponseEntity<>(this.walletService.getAllTransactionsWithDate(transactionDate, pageNumber, pageSize, pageable), HttpStatus.OK);
     }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<String> handleError(Exception e) {
+        String errorId = UUID.randomUUID().toString();
+        if (e != null) {
+            String logMessage = format("PAYMENT_ENGINE_REDIRECT_ERROR: errorId: {0}, message: {1}", errorId, e.getMessage());
+        }
+        return new ResponseEntity<>(errorId + " <-------------", HttpStatus.OK);
+    }
+
 
 
 }

@@ -6,6 +6,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.util.UUID;
+
+import static java.text.MessageFormat.format;
+
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 

@@ -32,22 +32,28 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http.csrf().disable().authorizeRequests()
                 .antMatchers("/css/**").permitAll()
-                .anyRequest().authenticated()
+                .antMatchers("/index").hasRole("USER")
+                .antMatchers("/adduser").hasRole("USER")
+                .antMatchers("/signup").hasRole("USER")
+                //.anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
+                .defaultSuccessUrl("/index")
                 .failureUrl("/login-error")
                 .permitAll();
+                //.and()
+                //.exceptionHandling().accessDeniedPage("/unauthorized");
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-       auth.inMemoryAuthentication()
-               .withUser("koray")
-               .password("{noop}pass")
-               .roles("USER");
+        auth.inMemoryAuthentication()
+                .withUser("koray")
+                .password("{noop}pass")
+                .roles("USER");
 
     }
 }

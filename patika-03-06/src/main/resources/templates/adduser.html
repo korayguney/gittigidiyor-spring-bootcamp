@@ -16,19 +16,19 @@
             <form action="#" th:action="@{/adduser}" th:object="${user}" method="post">
                 <div class="row">
                     <div class="form-group col-md-6">
-                        <label for="name" class="col-form-label">Name</label>
-                        <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Name">
-                        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
+                        <label for="username" class="col-form-label">Username</label>
+                        <input type="text" th:field="*{username}" class="form-control" id="username" placeholder="Username">
+                        <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="text-danger"></span>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="email" class="col-form-label">Email</label>
-                        <input type="text" th:field="*{email}" class="form-control" id="email" placeholder="Email">
-                        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>
+                        <label for="password" class="col-form-label">Password</label>
+                        <input type="password" th:field="*{password}" class="form-control" id="password" placeholder="Password">
+                        <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger"></span>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="age" class="col-form-label">Age</label>
-                        <input type="text" th:field="*{age}" class="form-control" id="age" placeholder="Age">
-                        <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="text-danger"></span>
+                        <label for="role" class="col-form-label">Role</label>
+                        <input type="text" th:field="*{role}" class="form-control" id="role" placeholder="Role">
+                        <span th:if="${#fields.hasErrors('role')}" th:errors="*{role}" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="row">

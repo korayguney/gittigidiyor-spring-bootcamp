@@ -6,10 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.NumberFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -26,17 +23,13 @@ public class User {
     private int id;
 
     @NotBlank(message = "Name is mandatory")
-    private String name;
+    private String username;
 
-    @Min(value = 0, message = "The age cannot be less than 0")
-    @Max(value = 120, message = "The age cannot be greater than 120")
-    @NumberFormat(style = NumberFormat.Style.NUMBER)
-    //@NotBlank(message = "Age is mandatory")
-    private int age;
+    @NotBlank(message = "Password is mandatory")
+    private String password;
 
-    @Email(message = "Email is not valid")
-    @NotBlank(message = "Email is mandatory")
-    private String email;
+    @Column(columnDefinition = "varchar(255) default 'USER'")
+    private String role = "USER";
 
 
 }
